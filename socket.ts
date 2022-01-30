@@ -1,11 +1,12 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import { createServer } from "http";
 import { Server } from "socket.io";
 dotenv.config();
 
 const app = express();
-const server = require("http").createServer(app);
+const server = createServer(app);
 
 app.use(cors());
 
