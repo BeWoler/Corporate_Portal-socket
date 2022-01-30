@@ -33,7 +33,7 @@ app.use((0, cors_1.default)({
     credentials: true,
     methods: ["GET", "POST"],
 }));
-const io = require("socket.io").listen(server, {
+const io = require("socket.io")(server, {
     cors: {
         origin: process.env.CORS_ORIGIN,
         credentials: true,
