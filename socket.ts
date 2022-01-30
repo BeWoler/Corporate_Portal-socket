@@ -12,7 +12,8 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN,
+    origin: "https://hardcore-sammet-c938c3.netlify.app",
+    credentials: true,
   },
 });
 
