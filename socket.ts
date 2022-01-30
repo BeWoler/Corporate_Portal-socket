@@ -12,7 +12,7 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "https://hardcore-sammet-c938c3.netlify.app",
+    origin: "https://hardcore-sammet-c938c3.netlify.app/chat",
     credentials: true,
   },
 });
