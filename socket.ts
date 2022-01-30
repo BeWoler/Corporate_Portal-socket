@@ -4,15 +4,9 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const server = require("http").Server(app);
+const server = require("http").createServer(app);
 
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-    methods: ["GET", "POST"],
-  })
-);
+app.use(cors());
 
 const io = require("socket.io")(server, {
   cors: {

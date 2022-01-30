@@ -27,12 +27,8 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 dotenv.config();
 const app = (0, express_1.default)();
-const server = require("http").Server(app);
-app.use((0, cors_1.default)({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-    methods: ["GET", "POST"],
-}));
+const server = require("http").createServer(app);
+app.use((0, cors_1.default)());
 const io = require("socket.io")(server, {
     cors: {
         cors: true,
