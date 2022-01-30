@@ -25,13 +25,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const socket_io_1 = require("socket.io");
 dotenv.config();
 const app = (0, express_1.default)();
 const server = require("http").createServer(app);
 app.use((0, cors_1.default)());
-const io = require("socket.io")(server, {
+const io = new socket_io_1.Server(server, {
     cors: {
-        cors: true,
         origin: process.env.CORS_ORIGIN,
         credentials: true,
         methods: ["GET", "POST"],
