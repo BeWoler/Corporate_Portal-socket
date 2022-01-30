@@ -33,8 +33,6 @@ app.use((0, cors_1.default)());
 const io = new socket_io_1.Server(server, {
     cors: {
         origin: process.env.CORS_ORIGIN,
-        credentials: true,
-        methods: ["GET", "POST"],
     },
 });
 let users = [];
