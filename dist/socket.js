@@ -29,12 +29,13 @@ const http_1 = require("http");
 const socket_io_1 = require("socket.io");
 dotenv.config();
 const PORT = process.env.PORT;
+const originUrl = process.env.CORS_ORIGIN;
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
 app.use((0, cors_1.default)());
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: "https://hardcore-sammet-c938c3.netlify.app/chat",
+        origin: originUrl,
         credentials: true,
     },
 });
