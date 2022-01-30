@@ -16,6 +16,7 @@ app.use(
 
 const io = require("socket.io")(server, {
   cors: {
+    cors: true,
     origin: process.env.CORS_ORIGIN,
     credentials: true,
     methods: ["GET", "POST"],
