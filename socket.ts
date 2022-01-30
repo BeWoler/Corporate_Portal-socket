@@ -5,6 +5,7 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 dotenv.config();
 
+const PORT = process.env.PORT;
 const app = express();
 const server = createServer(app);
 
@@ -32,8 +33,8 @@ const getUser = (userId: string) => {
   return users.find((user) => user.userId === userId);
 };
 
-server.listen(4000, () => {
-  console.log("Connected");
+server.listen(PORT, () => {
+  console.log(`Server is running on ${PORT} port`);
   io.on("connection", (socket: any) => {
     console.log("socket connected", socket.id);
     socket.on("addUser", (userId: string) => {

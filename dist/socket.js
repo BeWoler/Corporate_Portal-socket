@@ -28,6 +28,7 @@ const cors_1 = __importDefault(require("cors"));
 const http_1 = require("http");
 const socket_io_1 = require("socket.io");
 dotenv.config();
+const PORT = process.env.PORT;
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
 app.use((0, cors_1.default)());
@@ -48,8 +49,8 @@ const removeUser = (socketId) => {
 const getUser = (userId) => {
     return users.find((user) => user.userId === userId);
 };
-server.listen(4000, () => {
-    console.log("Connected");
+server.listen(PORT, () => {
+    console.log(`Server is running on ${PORT} port`);
     io.on("connection", (socket) => {
         console.log("socket connected", socket.id);
         socket.on("addUser", (userId) => {
