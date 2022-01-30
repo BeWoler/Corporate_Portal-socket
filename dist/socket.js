@@ -24,10 +24,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 dotenv.config();
 const app = (0, express_1.default)();
 const server = require("http").Server(app);
-const io = require("socket.io")(server, {
+app.use((0, cors_1.default)({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+    methods: ["GET", "POST"],
+}));
+const io = require("socket.io").listen(server, {
     cors: {
         origin: process.env.CORS_ORIGIN,
         credentials: true,
