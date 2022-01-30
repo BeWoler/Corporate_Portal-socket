@@ -33,7 +33,8 @@ const server = (0, http_1.createServer)(app);
 app.use((0, cors_1.default)());
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: process.env.CORS_ORIGIN,
+        origin: "https://hardcore-sammet-c938c3.netlify.app",
+        credentials: true,
     },
 });
 let users = [];
