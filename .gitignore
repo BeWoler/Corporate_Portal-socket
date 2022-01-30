@@ -2,9 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
-user-avatars
-users.json
+dist
 
 # testing
 tests/coverage
