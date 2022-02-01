@@ -1,16 +1,21 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import { createServer } from "http";
+import { Server } from "socket.io";
 dotenv.config();
 
+const PORT = process.env.PORT;
+const originUrl = process.env.CORS_ORIGIN;
 const app = express();
-const server = require("http").Server(app);
+const server = createServer(app);
 
-const io = require("socket.io")(server, {
+app.use(cors());
+
+const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN,
+    origin: originUrl,
     credentials: true,
-    methods: ["GET", "POST"],
   },
 });
 
@@ -29,8 +34,8 @@ const getUser = (userId: string) => {
   return users.find((user) => user.userId === userId);
 };
 
-server.listen(4000, () => {
-  console.log("Connected");
+server.listen(PORT, () => {
+  console.log(`Server is running on ${PORT} port`);
   io.on("connection", (socket: any) => {
     console.log("socket connected", socket.id);
     socket.on("addUser", (userId: string) => {
